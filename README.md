@@ -32,6 +32,12 @@ This project contains a simple backend API built with **Express.js and TypeScrip
    npm test
    ```
 
+5. **Swagger Documentation**
+   This project exposes complete automatic OpenAPI (Swagger) documentation. Once the server is running locally (either via `npm run dev` or `npm start`), you can view and test the API through the interactive UI by navigating to:
+   ```text
+   http://localhost:3000/api-docs
+   ```
+
 ## Design Decisions
 
 - **Express.js over NestJS**: Express was intentionally chosen for this simple task rather than heavy, opinionated frameworks like NestJS to eliminate irrelevant "magic" or boilerplate. This puts the spotlight directly on core engineering principles, routing and logic execution, ensuring absolute logical understanding and straightforward line-by-line maintainability.

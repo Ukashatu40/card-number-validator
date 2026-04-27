@@ -8,15 +8,9 @@ const options: swaggerJSDoc.Options = {
       version: '1.0.0',
       description: 'API to validate credit card numbers using the standard Luhn algorithm.',
     },
-    servers: [
-      {
-        url: 'http://localhost:3000',
-        description: 'Local development server',
-      },
-    ],
   },
-  // Paths to files containing OpenAPI definitions
-  apis: ['./src/routes/*.ts', './src/controllers/*.ts'],
+  // Paths to files containing OpenAPI definitions (looks in src for dev, dist for prod)
+  apis: ['./src/routes/*.ts', './src/controllers/*.ts', './dist/routes/*.js', './dist/controllers/*.js'],
 };
 
 export const swaggerSpec = swaggerJSDoc(options);

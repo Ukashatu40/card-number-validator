@@ -3,6 +3,7 @@
 This project contains a simple backend API built with **Express.js and TypeScript** that provides an endpoint to validate card numbers using the standard Luhn algorithm.
 
 ## Prerequisites
+
 - **Node.js** (v16.0 or higher recommended)
 - **npm**
 
@@ -10,24 +11,30 @@ This project contains a simple backend API built with **Express.js and TypeScrip
 
 1. **Install Dependencies**
    Run the following command to download all project dependencies:
+
    ```bash
    npm install
    ```
 
 2. **Running the Server Locally (Development mode)**
+
    ```bash
    npm run dev
    ```
+
    The server will start at `http://localhost:3000`.
 
 3. **Building the Production Code**
+
    ```bash
    npm run build
    ```
+
    This will compile the TypeScript code and place it inside the `dist` directory. You can then run it with `npm start`.
 
 4. **Running Tests**
    This project uses `Jest` for both unit and API integration testing.
+
    ```bash
    npm test
    ```
@@ -49,9 +56,10 @@ This project contains a simple backend API built with **Express.js and TypeScrip
 ## API Specification
 
 **Endpoint**
-`POST /api/validate`
+`POST /api/card/validate`
 
 **Request Body**
+
 ```json
 {
   "cardNumber": "1234567890123456"
@@ -59,5 +67,6 @@ This project contains a simple backend API built with **Express.js and TypeScrip
 ```
 
 **Responses**
-- **200 OK**: Returning `{"valid": true}` if the card structurally checks out via Luhn algorithm, or `{"valid": false}` if it doesn't cross the Luhn formula.
+
+- **200 OK**: Returning `{"valid": true, "message": "Card number is valid."}` if the card structurally checks out via Luhn algorithm, or `{"valid": false, "message": "Card number is invalid."}` if it doesn't cross the Luhn formula.
 - **400 Bad Request**: Returns `{"error": "message"}` dynamically if it's lacking entirely or sent non-string types.

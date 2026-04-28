@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import { CardService } from '../services/cardService';
+import { Request, Response } from "express";
+import { CardService } from "../services/cardService";
 
 export class ValidateController {
   private cardService: CardService;
@@ -10,7 +10,7 @@ export class ValidateController {
 
   /**
    * @swagger
-   * /api/validate:
+   * /api/card/validate:
    *   post:
    *     summary: Validates a card number using the Luhn algorithm
    *     requestBody:
@@ -35,6 +35,9 @@ export class ValidateController {
    *                 valid:
    *                   type: boolean
    *                   example: false
+   *                 message:
+   *                   type: string
+   *                   example: "Card number is invalid."
    *       400:
    *         description: Bad request (missing or invalid type for cardNumber)
    *         content:
@@ -53,7 +56,7 @@ export class ValidateController {
       const { cardNumber } = req.body;
 
       // 1. Missing or badly typed input
-      if (cardNumber === undefined || typeof cardNumber !== 'string') {
+      if (cardNumber === undefined || typeof cardNumber !== "string") {
         res.status(400).json({
           error: 'Bad Request: "cardNumber" is required and must be a string.',
         });
@@ -64,11 +67,14 @@ export class ValidateController {
       const isValid = this.cardService.isValidLuhn(cardNumber);
 
       // 3. Return correct response
-      res.status(200).json({ valid: isValid });
+      res.status(200).json({
+        valid: isValid,
+        message: isValid ? "Card number is valid." : "Card number is invalid.",
+      });
     } catch (error) {
       // Catch-all for unexpected server errors
-      console.error('Validation error:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      console.error("Validation error:", error);
+      res.status(500).json({ error: "Internal Server Error" });
     }
   };
 }

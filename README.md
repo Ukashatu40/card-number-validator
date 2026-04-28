@@ -40,7 +40,12 @@ This project contains a simple backend API built with **Express.js and TypeScrip
    ```
 
 5. **Swagger Documentation**
-   This project exposes complete automatic OpenAPI (Swagger) documentation. Once the server is running locally (either via `npm run dev` or `npm start`), you can view and test the API through the interactive UI by navigating to:
+   This project exposes complete automatic OpenAPI (Swagger) documentation. You can view and test the API through the interactive UI at:
+
+   **Live Demo**: https://card-number-validator-project.onrender.com/api-docs
+
+   Or, once the server is running locally (either via `npm run dev` or `npm start`), navigate to:
+
    ```text
    http://localhost:3000/api-docs
    ```
